@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pocket Games - Play a wide range of exciting mobile and web games including Fortune Tiger, Fortune Mouse, and more. Discover the best gaming experience with PG Soft®.">
+    <meta name="keywords" content="Pocket Games, PG Soft, mobile games, web games, gaming experience, innovative games, multiplayer games, gaming studio, Fortune Tiger, Mahjong Ways">
+    <meta name="author" content="Pocket Games">
+    <meta property="og:title" content="Pocket Games | Play Top Mobile & Web Games">
+    <meta property="og:description" content="Explore the best mobile and web games by PG Soft®. Play games like Fortune Tiger, Fortune Mouse, Fortune Ox, and more!">
+    <meta property="og:image" content="https://www.pgsoft.com/images/logo.jpg">
+    <meta property="og:url" content="https://pocket-games.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pocket Games | Play Top Mobile & Web Games">
+    <meta name="twitter:description" content="Discover top PG Soft® games including Fortune Tiger, Fortune Mouse, and other exciting mobile and web games.">
+    <meta name="twitter:image" content="https://www.pgsoft.com/images/logo.jpg">
+    <title>Pocket Games | Play the Best Mobile & Web Games</title>
+    <link rel="icon" href="https://www.pgsoft.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/"><img src="https://www.pgsoft.com/images/logo.jpg" alt="Pocket Games Logo"></a>
+            </div>
+            <ul class="navigation">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.pgsoft.com" target="_blank">Visit Official Website</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Explore the Best Mobile & Web Games</h1>
+            <p>Discover innovative games with immersive experiences, stunning graphics, and endless fun. Get started with PG Soft® now!</p>
+            <a href="#games" class="cta-button">Explore Our Games</a>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games">
+        <h2>Our Featured Games</h2>
+        <div class="games-container" id="games-container">
+            <!-- Games will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, don't hesitate to reach out to us!</p>
+        <ul>
+            <li>Email: <a href="mailto:support@pocketgames.com">support@pocketgames.com</a></li>
+            <li>Phone: +1 (800) 123-4567</li>
+            <li>Follow Us: 
+                <a href="https://www.twitter.com/PocketGames" target="_blank">Twitter</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Popup Ad Section -->
+    <div id="popup-ad" class="popup-ad">
+        <div class="popup-content">
+            <span class="close-btn" id="close-popup">&times;</span>
+            <div class="popup-header">
+                <i class="fa fa-gift"></i>
+                <h3>Get Win 1000% Instant and Free $100!</h3>
+            </div>
+            <p>Join now and claim your rewards instantly. Don’t miss out on this limited offer!</p>
+            <a href="https://t.me/RektDevelopers" class="join-btn" target="_blank">Join Now on Telegram</a>
+        </div>
+    </div>
+
+    <script>
+        // Fetch the JSON data from the provided URL
+        fetch('https://raw.githubusercontent.com/DelightDevTeam/super_bet_a/4698c367022b668bdc28a7f946eb50f2366f7d87/game_json/pg_soft_1.json')
+            .then(response => response.json())
+            .then(data => {
+                const gamesContainer = document.getElementById('games-container');
+                
+                data.games.forEach(game => {
+                    const gameElement = document.createElement('div');
+                    gameElement.classList.add('game-item');
+                    
+                    gameElement.innerHTML = `
+                        <img src="${game.image_url}" alt="${game.name}">
+                        <h3><a href="${game.url}">${game.name}</a></h3>
+                        <p>${game.description}</p>
+                    `;
+                    
+                    gamesContainer.appendChild(gameElement);
+                });
+            })
+            .catch(error => console.error('Error loading games data:', error));
+
+        // Show popup on page load
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('popup-ad').style.display = 'block';
+            }, 2000); // Show after 2 seconds
+        };
+
+        // Close the popup
+        document.getElementById('close-popup').addEventListener('click', function() {
+            document.getElementById('popup-ad').style.display = 'none';
+        });
+    </script>
+
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px 0;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header nav .logo img {
+            width: 150px;
+        }
+
+        header nav .navigation {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav .navigation li {
+            margin-left: 20px;
+        }
+
+        header nav .navigation li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        header nav .navigation li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://www.pgsoft.com/images/hero.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Games Section */
+        #games {
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        #games h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .game-item {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: calc(33.333% - 20px);
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .game-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .game-item img {
+            width: 100%;
+            border-radius: 10px;
+            height: auto;
+        }
+
+        .game-item h3 {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+
+        .game-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #contact ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #contact ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        #contact a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Popup Ad Styling */
+        .popup-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .popup-header {
+            margin-bottom: 20px;
+        }
+
+        .popup-header i {
+            font-size: 30px;
+            color: #ff6600;
+        }
+
+        .popup-header h3 {
+            font-size: 1.8rem;
+            margin-top: 10px;
+        }
+
+        .join-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .join-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .close-btn {
+            font-size: 25px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            .games-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-item {
+                width: 80%;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .game-item {
+                width: 90%;
+            }
+
+            #hero h1 {
+                font-size: 2rem;
+            }
+
+            #hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</body>
+
+</html>
